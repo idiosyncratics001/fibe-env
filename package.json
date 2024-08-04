@@ -1,0 +1,22 @@
+{
+  "name": "fibe-env",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.mjs",
+  "keywords": [
+    "ES6",
+    "env",
+    "strict",
+    "freeze",
+    "intrinsics",
+    "process.env",
+    "global"
+  ],
+  "author": "Idiosyncratics",
+  "open-source-members-thanks": [
+    "use-strict everywhere by https://www.npmjs.com/~isaacs",
+    "process.env freeze by https://github.com/vorticalbox"
+  ],
+  "license": "MIT",
+  "description": ".env settings and distribution throughout your application"
+}

@@ -1,6 +1,5 @@
-Managing environment variables and distribution
+###Managing environment variables and distribution
 
-===
 
 ES6 styled .env settings and distribution throughout your application.
 
@@ -121,7 +120,7 @@ setLockdown()
 
 ```
 
-### It's all thank to you
+### It's all thanks to you
 
 This is possible thanks to all the patient people on forums and contributors helping curious and creative people solve their problems, one at a time. Thank you.
 

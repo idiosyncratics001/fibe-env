@@ -1,4 +1,4 @@
-###Managing environment variables and distribution
+### Managing environment variables and distribution
 
 
 ES6 styled .env settings and distribution throughout your application.

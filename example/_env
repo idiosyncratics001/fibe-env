@@ -1,0 +1,25 @@
+# --[ EXAMAPLE environment file ]--
+
+// --[ READ ME ]--
+#   also see options below
+#   
+ #   No empty spaces at the start of the line using comments (#)
+#       it won't fail but you'll get at least one strange item in your env (one entry with "#" as key)
+
+env_node_key1:this_is_fine
+ENV_NODE_KEY2:this_is_fine
+ENV_NODE_KEY2:this_is_removed
+ENV_NODE_KEY3: this_is_fine
+ENV_NODE_KEY4:  this_is_fine
+ENV_NODE_KEY5$  this_is_fine:butremoved_fromhere
+ENV_NODE_KEY7   ENV_NODE_KEY7 doube_key_removed      
+ENV_NODE_KEY6$this_is_not_fine
+
+# --[ OPTIONS ]--
+# Either set to false, empty or #
+# by default checked-in unless CHECKOUT or options set
+FIBE_ENV_STRICT: true
+FIBE_ENV_CHECKOUT: false
+FIBE_ENV_INTRINSICS: false
+FIBE_ENV_PROCESS_ENV: false
+FIBE_ENV_GLOBAL: false

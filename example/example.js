@@ -9,7 +9,7 @@ const __dirname = dirname(__filename);
 
 
 const options = {
-    file: '.env',
+    file: '_env',
     path: __dirname,
     strict: true,
     checkout: false,

@@ -1,11 +1,23 @@
 {
   "name": "fibe-env",
-  "version": "1.0.0",
-  "type": "module",
+  "version": "1.0.1",
+  "description": ".env settings and distribution",
   "main": "index.mjs",
+  "type": "module",
+
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/idiosyncratics001/fibe-env.git"
+  },
   "keywords": [
     "ES6",
-    "env",
+    ".env",
     "strict",
     "freeze",
     "intrinsics",
@@ -13,10 +25,9 @@
     "global"
   ],
   "author": "Idiosyncratics",
-  "open-source-members-thanks": [
-    "use-strict everywhere by https://www.npmjs.com/~isaacs",
-    "process.env freeze by https://github.com/vorticalbox"
-  ],
   "license": "MIT",
-  "description": ".env settings and distribution throughout your application"
+  "bugs": {
+    "url": "https://github.com/idiosyncratics001/fibe-env/issues"
+  },
+  "homepage": "https://github.com/idiosyncratics001/fibe-env#readme"
 }

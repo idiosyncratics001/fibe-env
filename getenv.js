@@ -25,24 +25,29 @@ export default function (envFile) {
       
       const lines = data.split('\n');
         lines.forEach((line) => {
-            newLine = true;
-            let tokens = line.split(' ');         //split line into tokens
-            if (regex.test(tokens[0][0])) return  //if line start with special character go to next line
-            if (pointer) pointer = null;          //if key is given but value is not reset pointer
+          newLine = true;
+          //split line into tokens
+          let tokens = line.split(' ');
+          //if line start with special character go to next line
+          if (regex.test(tokens[0][0])) return
+          //if key is given but value is not than reset pointer
+          if (pointer) pointer = null;
+           //remove duplicates from each line
+          tokens = Array.from(new Set(tokens)) 
+          tokens.forEach((token) => {
+            if (!newLine) return
+            if (!token) return
+            //key already exists go to new line
+            if (Object.keys(result).includes(token)) return newLine = false  
 
-            tokens = Array.from(new Set(tokens))  //remove duplicates from each line
-            tokens.forEach((token) => {
-                    if (!newLine) return
-                    if (!token) return
-                    if (Object.keys(result).includes(token)) return newLine = false  //key already exists go to new line
-
-                    if (!pointer) {
-                      if (regex.test(token)) token = cleanKey(token) //remove unwanted from key
-                      pointer = addKey(token)
-                    }else{
-                      pointer(token); //add value
-                    }
-            })
+            if (!pointer) {
+              //remove unwanted from key
+              if (regex.test(token)) token = cleanKey(token) 
+              pointer = addKey(token)
+            }else{
+              pointer(token); //add value
+            }
+          })
         });
-      return result;
+  return result;
 }

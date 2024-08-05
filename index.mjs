@@ -5,17 +5,16 @@ import getEnvFromFile from './getenv.js'
 export default class _env {
     static #meta = {}
     static #env = {}
-    static scopes = []
         
     constructor(options = {}) {
         const file = path.join(options.path || process.cwd(), options.file || '.env');
         
         if (Object.isFrozen(_env)) {
-            throw new Error('env locked');
+            throw Error('env locked, cannot apply changes to env');
         } else {
             _env.#meta.file = _env.#meta.file || [];
             _env.#meta.file.push(new Date, file);
-            _env.#meta.active = new Date;
+            _env.#meta.active = _env.#meta.active || new Date;
             
             _env.#env.PATH_ROOT = process.cwd();
             Object.assign(_env.#env, getEnvFromFile(file));
@@ -29,7 +28,6 @@ export default class _env {
                 ? _env.setIntrinsics()
                 : _env.#meta.intrinsics = false;
             
-            // --[ Experimental ]--
             options.processEnv === true || _env.#env.FIBE_ENV_PROCESS_ENV === 'true'
                 ? _env.setProcessEnv()
                 : _env.#meta.processEnv = false;
@@ -53,11 +51,12 @@ export default class _env {
     }
     
     static setEnv(key, value) {
-        if (Object.keys(_env.#env).includes(key)) return "key exists"
+        if (Object.keys(_env.#env).includes(key)) return "key already exists"
         _env.#env[key] = value
     }
 
     static delEnv(key) {
+        if (!Object.keys(_env.#env).includes(key)) return "key doesn't exist"
         delete _env.#env[key]
     }
 
@@ -72,14 +71,15 @@ export default class _env {
 
     static setStrict(){
     // https://www.npmjs.com/package/use-strict
-    // STRICT EVERYWHERE!! thank you Isaacs!
+    // Thank you Isaacs!
+    // STRICT EVERYWHERE!!
+        if (Object.isFrozen(module.wrap)) return true;
         module.Module.wrapper[0] += '"use strict";';
         Object.freeze(module.wrap);
         _env.#meta.strict = true;
     }
 
     static setProcessEnv() {
-    // --[ Experimental ]--
     // https://github.com/vorticalbox
     // Thank you vorticalbox!
         process.env = new Proxy({...process.env}, {
@@ -97,6 +97,7 @@ export default class _env {
     }
 
     static setGlobal() {
+        if (Object.isFrozen(global)) return true;
         Object.freeze(global);
         _env.#meta.global = true;
     }

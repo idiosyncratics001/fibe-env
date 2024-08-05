@@ -1,6 +1,6 @@
 {
   "name": "fibe-env",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": ".env settings and distribution",
   "main": "index.mjs",
   "type": "module",

@@ -5,8 +5,9 @@ export default function (envFile) {
     var data = fs.readFileSync(envFile, 'utf8')
       
       const result = {};
-      const regex  = /[\\\/\.\,\!\@\#\$\%\^\&\*\(\)\+\-\=\:\|]/;
-      const regexG = /[\\\/\.\,\!\@\#\$\%\^\&\*\(\)\+\-\=\:\|]/g;
+      const regex  = /[\\\/\.\,\!\@\#\$\%\^\&\*\(\)\+\-\=\|]/;
+      const regexG = /[\\\/\.\,\!\@\#\$\%\^\&\*\(\)\+\-\=\|]/g;
+      const regexL = /[\:\s]/
       let pointer  = null;
       let newLine  = false;
       
@@ -27,7 +28,7 @@ export default function (envFile) {
         lines.forEach((line) => {
           newLine = true;
           //split line into tokens
-          let tokens = line.split(' ');
+          let tokens = line.split(regexL);
           //if line start with special character go to next line
           if (regex.test(tokens[0][0])) return
           //if key is given but value is not than reset pointer

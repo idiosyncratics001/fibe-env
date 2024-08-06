@@ -34,14 +34,14 @@ Add an .env file to your project root and define key and value pairs.
 ```
 ENV_KEY1   value
 
-ENV_KEY2   this_is_fine
-ENV_KEY2   this_is_removed
-ENV_KEY6 : this_is_not_fine
-ENV_KEY7   ENV_NODE_KEY7 doube_key_removed      
-ENV_KEY9:  this_is_a_comma-end, ENV_NODE_KEY9b: KEY9b_ignored,
-ENV_KEY11: 192.168.0.1
-EN-V_K.E.Y12: only_underscore_allowed_in_key
-ENV_NODE_KEY13: ^&*
+env_node_key1:this_is_fine
+ENV_NODE_KEY2:this_is_fine
+ENV_NODE_KEY2:this_is_removed
+ENV_NODE_KEY3: this_is_fine
+ENV_NODE_KEY4:  this_is_fine
+ENV_NODE_KEY5$  this_is_fine:butremoved_fromhere
+ENV_NODE_KEY6$this_is_not_fine
+ENV_NODE_KEY7   ENV_NODE_KEY7 doube_key_removed
 
 ```
 Import the module and add the config.
